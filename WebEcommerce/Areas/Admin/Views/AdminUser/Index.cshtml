@@ -1,0 +1,69 @@
+﻿@*@model IEnumerable<WebEcommerce.Models.User>*@
+@{
+    ViewData["Title"] = "Admin User List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+                    <div class="page-header">
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb breadcrumb-dash">
+                                <a asp-area="Admin" asp-controller="AdminUser" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <span class="breadcrumb-item active">User List</span>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row m-b-30">
+                                <div class="col-lg-12">
+                                    <div class="d-md-flex">
+                                        <div class="m-b-10 m-r-15">
+                                            <select class="custom-select" style="min-width: 180px;">
+                                                <option selected>Role</option>
+                                                <option value="">All</option>
+                                                <option value="">Admin</option>
+                                                <option value="">User</option>
+                                            </select>
+                                        </div>
+                                        <div class="m-b-10">
+                                            <a class="btn btn-info btn-tone m-r-5" asp-area="Admin" asp-controller="AdminUser" asp-action="Create">Add User</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover e-commerce-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Full Name</th>
+                                            <th>Admin Role</th>
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(Model != null)
+                                        {
+                                            foreach ( var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.UserId</td>
+                                                    <td>
+                                                        <p>@item.Name</p>
+                                                        <p>@item.Email</p>
+                                                    </td>
+                                                    <td>@item.IsAdmin</td>
+                                                    <td>
+                                                        <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminUser" asp-action="Details" asp-route-id="@item.UserId">View</a>
+                                                        <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminUser" asp-action="Edit" asp-route-id="@item.UserId">Edit</a>
+                                                        <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminUser" asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
