@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Database.DomainModel.Product>
+﻿ @model IEnumerable<Database.DomainModel.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -66,6 +66,9 @@
                                             <th>
                                                 @Html.DisplayNameFor(model => model.ReleasedYear)
                                             </th>
+                                             <th>
+                                                @Html.DisplayNameFor(model => model.CategoryId)
+                                            </th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -85,9 +88,10 @@
                                                         @Html.DisplayFor(modelItem => item.Price)
                                                     </td>
                                                     <td>
+                                                        @*<img src="data:image/png;base64,@item.Picture" alt="Image" width="50px" height="70px" />*@
                                                         @if(item.Picture != null)
                                                         {
-                                                            <img src="@Url.Content(item.Picture)" alt="Image" />
+                                                            <img src="@Url.Content(item.Picture)" alt="Image" width="50px" height="70px" />
                                                         }
                                                     </td>
                                                     <td>
@@ -95,6 +99,9 @@
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.ReleasedYear)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Category.Name)
                                                     </td>
                                                     <td class="text-right">
                                                         @Html.ActionLink("Edit", "Edit", new { Id=item.Id }) |

@@ -17,14 +17,14 @@ namespace Database.DomainModel
 
         public string Name { get; set; }
 
-        public List<string> Subcategories { get; set; }
+        //public List<string> Subcategories { get; set; }
 
-        public List<MongoDBRef> Products { get; set; }
+        //public List<MongoDBRef> Products { get; set; }
 
-        public Category()
-        {
-            Products = new List<MongoDBRef>();
-            Subcategories = new List<string>();
-        }
+        //public Category()
+        //{
+        //    Products = new List<MongoDBRef>();
+        //    Subcategories = new List<string>(); 
+        //}
     }
 }

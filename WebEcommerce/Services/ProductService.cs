@@ -18,6 +18,7 @@ namespace WebEcommerce.Services
         }
 
         public IMongoCollection<Product> _products => _db.GetCollection<Product>("product");
+        public IMongoCollection<Category> _categories => _db.GetCollection<Category>("category");
 
         public IEnumerable<Product> GetAllProducts()
         {
@@ -57,12 +58,13 @@ namespace WebEcommerce.Services
             //var filter = Builders<Product>.Filter.Eq(c => c.Id, _id);
             var filter = Builders<Product>.Filter.Eq("Id", product.Id);
             var update = Builders<Product>.Update
-                .Set("Brand", product.Brand)
-                .Set("Model", product.Model)
-                .Set("Price", product.Price)
-                .Set("Model", product.Model)
-                .Set("OS", product.OS)
-                .Set("ReleasedYear", product.ReleasedYear);
+            .Set("Brand", product.Brand)
+            .Set("Model", product.Model)
+            .Set("Price", product.Price)
+            .Set("Model", product.Model)
+            .Set("OS", product.OS)
+            .Set("ReleasedYear", product.ReleasedYear);
+            //.Set("Category", product.CategoryId);
             _products.UpdateOne(filter, update);
         }
 

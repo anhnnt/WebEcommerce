@@ -9,6 +9,7 @@ builder.Services.Configure<BookStoreDatabaseSettings>(
     builder.Configuration.GetSection("DatabaseSettings"));
 
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<CategoryService>();
 
 var app = builder.Build();
 

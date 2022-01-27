@@ -28,13 +28,18 @@ namespace Database.DomainModel
 
         [DataType(DataType.ImageUrl)]
         [Required]
-        public string Picture { get; set; }
+        public string Picture { get; set; } 
 
         [Required]
         public string OS { get; set; }
 
         [Required]
         public int ReleasedYear { get; set; }
+
+        [Display(Name = "Category")]
+        public string CategoryId { get; set; }
+
+        public Category Category { get; set; }
 
     }
 }
